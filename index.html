@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanışma Sitesi</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  </head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Ana Sayfa</a></li>
+        <li><a href="#">Üyeler</a></li>
+        <li><a href="#">Mesajlaşma</a></li>
+        <li>
+          <a href="#" id="loginBtn">Giriş Yap</a>
+        </li>
+        <li>
+          <select id="languageSelect">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <h1>Kayıt Ol</h1>
+    <form action="/kayit" method="POST">
+      <label for="username">Kullanıcı Adı:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <label for="email">E-posta:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="password">Şifre:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <label for="gender">Cinsiyet:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Seçiniz</option>
+        <option value="male">Erkek</option>
+        <option value="female">Kadın</option>
+        <option value="other">Diğer</option>
+      </select>
+      
+      <label for="birthdate">Doğum Tarihi:</label>
+      <input type="date" id="birthdate" name="birthdate" required>
+      
+      <label for="nickname">Takma Ad (Nick):</label>
+      <input type="text" id="nickname" name="nickname" required>
+      
+      <button type="submit">Kayıt Ol</button>
+    </form>
+  </main>
+
+  <div id="loginFormContainer">
+    <form action="/giris" method="POST">
+      <input type="email" name="email" placeholder="E-posta" required>
+      <input type="password" name="password" placeholder="Şifre" required>
+      <button type="submit">Giriş Yap</button>
+      <button type="button" id="closeBtn">Kapat</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>Tanışma Sitesi &copy; 2023</p>
+  </footer>
+
+  <script>
+    const loginBtn = document.getElementById("loginBtn");
+    const loginFormContainer = document.getElementById("loginFormContainer");
+    const closeBtn = document.getElementById("closeBtn");
+
+    loginBtn.addEventListener("click", function() {
+      loginFormContainer.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", function() {
+      loginFormContainer.style.display = "none";
+    });
+  </script>
+</body>
+</html>
